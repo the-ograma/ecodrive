@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f0f0f0;
+      color: #333;
+      
+    } 
+
+    .background-image {
+    background-image: url('https://static.wixstatic.com/media/7fd982_4ffcada3f98d4c4090e3205686b77bde~mv2.png');
+    background-size: cover; 
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+}
+    header {
+      background-color: #ffffff;
+      color: #101010;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(234, 231, 231, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .header-logo {
+      margin-bottom: 10px;
+    }
+
+    .header-logo img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .button-container span {
+      cursor: pointer;
+      padding: 12px 20px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      background-color: #000000b0;
+      transition: background-color 0.3s ease;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .button-container span:hover {
+      background-color: #1c7263;
+    }
+
+    .container {
+      text-align: center;
+      margin: 20px auto;
+      max-width: 1200px;
+    }
+
+    .title {
+      font-size: 2.5em;
+      color: #00796b;
+      margin-bottom: 10px;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #about-message {
+      border-radius: 10px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 800px;
+      background-color: #ffffff;
+      margin: 30px auto;
+      padding: 20px;
+      color: #555;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+
+    .rent-form-container, .offer-form-container {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #00796b;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #00796b;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    #chat-box {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #chat-box-header {
+      background-color: #00796b;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px 8px 0 0;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #chat-box-messages {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #chat-box-input {
+      width: calc(100% - 80px);
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    #chat-box-send {
+      width: 70px;
+      padding: 10px;
+      border: none;
+      background-color: #00796b;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    #chat-box-send:hover {
+      background-color: #004d40;
+    }
+
+    footer {
+      background-color: #f6f7f7;
+      color: #000000;
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .spaced-text {
+      margin-bottom: 20px;
+    }
+
+    .horizontal-line {
+      height: 2px;
+      background-color: #00796b;
+      margin: 20px 0;
+    }
+
+    .no-spacing {
+      margin: 0;
+    }
+
+    .chat-icon {
+      cursor: pointer;
+      padding: 5px 10px;
+      margin-top: 10px;
+      border: 1px solid #00796b;
+      border-radius: 5px;
+      background-color: #00796b;
+      color: #fff;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .chat-icon:hover {
+      background-color: #004d40;
+    }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVBhyI3UIVHAHnjVjVEi-KrE-5ZaFFG78&libraries=places"></script>
+  <script>
+    function initAutocomplete() {
+      var pickupInput = document.getElementById('pickupLocation');
+      var dropoffInput = document.getElementById('dropoffLocation');
+      var carLocationInput = document.getElementById('carLocation');
+
+      var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+      var dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+      var carLocationAutocomplete = new google.maps.places.Autocomplete(carLocationInput);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initAutocomplete();
+
+      const homeSection = document.getElementById('HomeSection');
+      const rentSection = document.getElementById('RentSection');
+      const offerSection = document.getElementById('OfferSection');
+      const chatSection = document.getElementById('ChatSection');
+
+      const availableCarsContainer = document.createElement('div');
+      availableCarsContainer.id = 'availableCarsContainer';
+      rentSection.appendChild(availableCarsContainer);
+
+      document.getElementById('Home').addEventListener('click', function () {
+        homeSection.classList.add('visible');
+        homeSection.classList.remove('hidden');
+        rentSection.classList.add('hidden');
+        rentSection.classList.remove('visible');
+        offerSection.classList.add('hidden');
+        offerSection.classList.remove('visible');
+        chatSection.classList.add('hidden');
+        chatSection.classList.remove('visible');
+      });
+
+      document.getElementById('Rent').addEventListener('click', function () {
+        homeSection.classList.add('hidden');
+        homeSection.classList.remove('visible');
+        rentSection.classList.add('visible');
+        rentSection.classList.remove('hidden');
+        offerSection.classList.add('hidden');
+        offerSection.classList.remove('visible');
+        chatSection.classList.add('hidden');
+        chatSection.classList.remove('visible');
+      });
+
+      document.getElementById('Offer').addEventListener('click', function () {
+        homeSection.classList.add('hidden');
+        homeSection.classList.remove('visible');
+        rentSection.classList.add('hidden');
+        rentSection.classList.remove('visible');
+        offerSection.classList.add('visible');
+        offerSection.classList.remove('hidden');
+        chatSection.classList.add('hidden');
+        chatSection.classList.remove('visible');
+      });
+
+      document.getElementById('Chat').addEventListener('click', function () {
+        homeSection.classList.add('hidden');
+        homeSection.classList.remove('visible');
+        rentSection.classList.add('hidden');
+        rentSection.classList.remove('visible');
+        offerSection.classList.add('hidden');
+        offerSection.classList.remove('visible');
+        chatSection.classList.add('visible');
+        chatSection.classList.remove('hidden');
+      });
+
+      const offerForm = document.getElementById('offerForm');
+      const carPrice = document.getElementById('carPrice');
+      const carType = document.getElementById('carType');
+
+      const carPrices = {
+        'Tesla Model 3': 100,
+        'Nissan Leaf': 80,
+        'Chevy Bolt': 90,
+        'BMW i3': 110
+      };
+
+      carType.addEventListener('change', function () {
+        carPrice.value = carPrices[carType.value];
+      });
+
+      offerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const carModel = document.getElementById('carModel').value;
+        const carYear = document.getElementById('carYear').value;
+        const carPrice = document.getElementById('carPrice').value;
+        const carLocation = document.getElementById('carLocation').value;
+
+        const carCard = document.createElement('div');
+        carCard.classList.add('car-card');
+        carCard.style.border = '1px solid #ddd';
+        carCard.style.borderRadius = '8px';
+        carCard.style.padding = '15px';
+        carCard.style.marginBottom = '10px';
+        carCard.style.backgroundColor = '#ffffff';
+        carCard.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+
+        carCard.innerHTML = `
+          <h4>${carModel} (${carYear})</h4>
+          <p><strong>Price:</strong> $${carPrice}</p>
+          <p><strong>Location:</strong> ${carLocation}</p>
+          <div class="chat-icon" onclick="openChat('${carModel}', '${carYear}', '${carLocation}')">Chat with Owner</div>
+        `;
+
+        availableCarsContainer.appendChild(carCard);
+
+        offerForm.reset();
+      });
+
+      window.openChat = function(carModel, carYear, carLocation) {
+        document.getElementById('Chat').click();
+
+        const chatBoxMessages = document.getElementById('chat-box-messages');
+        const chatBoxHeader = document.getElementById('chat-box-header');
+
+        chatBoxHeader.textContent = `Chat about ${carModel} (${carYear}) - ${carLocation}`;
+
+        chatBoxMessages.innerHTML = `
+          <p><strong>You:</strong> Hi, I'm interested in your ${carModel} (${carYear}) available at ${carLocation}. Is it still available?</p>
+        `;
+      };
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+    <div class="button-container">
+      <span id="Home">Home</span>
+      <span id="Rent">Rent a Car</span>
+      <span id="Offer">Offer a Car</span>
+      <span id="Chat">Chat</span>
+    </div>
+  </header>
+
+  <section id="HomeSection" class="container visible">
+    <div class="background-image">
+      <h1>Welcome to EcoDrive: An Affordable Electric Car Rental Service </h1>
+    </div>
+  </section>
+
+  <section id="RentSection" class="container hidden">
+    <h2 class="title">Available Cars</h2>
+  </section>
+
+  <section id="OfferSection" class="container hidden">
+    <h2 class="title">Offer a Car</h2>
+    <div class="offer-form-container">
+      <form id="offerForm">
+        <div class="form-group">
+          <label for="carModel">Car Model:</label>
+          <input type="text" id="carModel" required>
+        </div>
+        <div class="form-group">
+          <label for="carYear">Year of Manufacture:</label>
+          <input type="text" id="carYear" required>
+        </div>
+        <div class="form-group">
+          <label for="carType">Car Type:</label>
+          <select id="carType" required>
+            <option value="">Select Car Type</option>
+            <option value="Tesla Model 3">Tesla Model 3</option>
+            <option value="Nissan Leaf">Nissan Leaf</option>
+            <option value="Chevy Bolt">Chevy Bolt</option>
+            <option value="BMW i3">BMW i3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="carPrice">Price per Day ($):</label>
+          <input type="number" id="carPrice" required readonly>
+        </div>
+        <div class="form-group">
+          <label for="carLocation">Location:</label>
+          <input type="text" id="carLocation" required>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="ChatSection" class="container hidden">
+    <div id="chat-box">
+      <div id="chat-box-header">Chat with Car Owner</div>
+      <div id="chat-box-messages"></div>
+      <div>
+        <input type="text" id="chat-box-input" placeholder="Type your message here...">
+        <button id="chat-box-send">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+  </footer>
+</body>
+</html>
